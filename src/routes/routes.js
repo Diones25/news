@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import newController from '../controllers/newsController.js';
 import dashboardController from '../controllers/dashboardController.js';
+import authController from '../controllers/authController.js';
 
 const router = Router();
 
@@ -17,5 +18,11 @@ router.post('/admin/create', dashboardController.create);
 router.get('/admin/aprove', dashboardController.Showapprove);
 router.put('/admin/aprove', dashboardController.approve);
 router.get('/admin/aprove/:id', dashboardController.approveDetails);
+
+//Rotas de Login
+router.get('/login', authController.showLogin);
+router.post('/login', authController.showLogin);
+router.get('/login/create', authController.showcreate);
+router.post('/login/create', authController.create);
 
 export default router;
