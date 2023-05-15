@@ -19,7 +19,7 @@ const approveDetails = (req, res) => {
   res.send('Admin aprovar -> Detalhe da notícia')
 }
 
-export default {
+module.exports = {
   showCreate,
   create,
   Showapprove,

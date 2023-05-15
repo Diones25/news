@@ -15,7 +15,7 @@ const login = (req, res) => {
   res.send('Realiza o login');
 }
 
-export default {
+module.exports = {
   showcreate,
   create,
   showLogin,

@@ -19,7 +19,7 @@ const contact = (req, res) => {
   res.render("contact.ejs");
 }
 
-export default {
+module.exports = {
   home,
   newsDetail,
   lastedNews,

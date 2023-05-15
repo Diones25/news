@@ -1,7 +1,7 @@
-import { Router } from 'express';
-import newController from '../controllers/newsController.js';
-import dashboardController from '../controllers/dashboardController.js';
-import authController from '../controllers/authController.js';
+const { Router } = require('express');
+const newController = require('../controllers/newsController.js');
+const dashboardController = require('../controllers/dashboardController.js');
+const authController = require('../controllers/authController.js');
 
 const router = Router();
 
@@ -25,4 +25,4 @@ router.post('/login', authController.showLogin);
 router.get('/login/create', authController.showcreate);
 router.post('/login/create', authController.create);
 
-export default router;
+module.exports = router;
