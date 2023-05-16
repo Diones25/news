@@ -6,7 +6,7 @@ dotenv.config();
 
 const sequelize = new Sequelize(process.env.BD, 'root', '', {
     host: process.env.HOST,
-    dialect: 'mysq'
+    dialect: 'mysql'
 });
 
 try {
