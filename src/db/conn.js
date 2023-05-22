@@ -4,9 +4,9 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.BD, 'root', '', {
-    host: process.env.HOST,
-    dialect: 'mysql'
+const sequelize = new Sequelize(process.env.BD, process.env.BD_USER, process.env.BD_PASSWORD, {
+    host: process.env.BD_HOST,
+    dialect: 'postgres'
 });
 
 try {
