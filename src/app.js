@@ -29,36 +29,36 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Middleware de session
-app.use(
-  session({
-    name: "session",
-    secret: "bWluaGFoYXNoZGVlbmNydXB0YcOnw6NvQmFzZTY0QA==",
-    resave: false,
-    saveUninitialized: false,
-    store: new FileStore({
-      logFn: function() {},
-      path: require('path').join(require('os').tmpdir(), 'sessions'),
-    }),
-    cookie: {
-      secure: false,
-      maxAge: 360000,
-      expires: new Date(Date.now() + 360000),
-      //httpOnly: false
-      httpOnly: true
-    }
-  })
-);
+// app.use(
+//   session({
+//     name: "session",
+//     secret: "bWluaGFoYXNoZGVlbmNydXB0YcOnw6NvQmFzZTY0QA==",
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new FileStore({
+//       logFn: function() {},
+//       path: require('path').join(require('os').tmpdir(), 'sessions'),
+//     }),
+//     cookie: {
+//       secure: false,
+//       maxAge: 360000,
+//       expires: new Date(Date.now() + 360000),
+//       //httpOnly: false
+//       httpOnly: true
+//     }
+//   })
+// );
 
-//flash messages
-app.use(flash)
+// //flash messages
+// app.use(flash)
 
-//Configurar sesions na resposta
-app.use((req, res, next) => {
-  if(req.session.userid) {
-    res.locals.session = req.session
-  }
+// //Configurar sesions na resposta
+// app.use((req, res, next) => {
+//   if(req.session.userid) {
+//     res.locals.session = req.session
+//   }
 
-  next();
-});
+//   next();
+// });
 
 module.exports = app;
