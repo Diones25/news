@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const newController = require('../controllers/newsController.js');
 const dashboardController = require('../controllers/dashboardController.js');
-const authController = require('../controllers/authController.js');
+const authController = require('../controllers/AuthController.js');
 
 const router = Router();
 
