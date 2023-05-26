@@ -350,7 +350,7 @@
       animation: 'fade', // Fade, slide, none
       animationInSpeed: 200, // Animation in speed (ms)
       animationOutSpeed: 200, // Animation out speed (ms)
-      scrollText: '<img src="/img/arrow-up.svg" alt="">', // Text for element
+      scrollText: '<img src="/news/img/arrow-up.svg" alt="">', // Text for element
       activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
     });
 
