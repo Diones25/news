@@ -1,22 +1,22 @@
 
 const home = (req, res) => {
-  res.render("home.ejs");
+  res.render("pages/news/home.ejs");
 }
 
 const newsDetail = (req, res) => {
-  res.render("newsDetail.ejs");
+  res.render("pages/news/newsDetail.ejs");
 }
 
 const lastedNews = (req, res) => {
-  res.render("lastedNews.ejs");
+  res.render("pages/news/lastedNews.ejs");
 }
 
 const about = (req, res) => {
-  res.render("about.ejs");
+  res.render("pages/news/about.ejs");
 }
 
 const contact = (req, res) => {
-  res.render("contact.ejs");
+  res.render("pages/news/contact.ejs");
 }
 
 module.exports = {
