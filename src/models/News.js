@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../db/conn.js');
+const User = require('./User.js');
 
 const News = db.define('News', {
     titulo: {
@@ -27,5 +28,8 @@ const News = db.define('News', {
     timestamps: true
 }
 );
+
+News.belongsTo(User);
+User.hasMany(News);
 
 module.exports = News;

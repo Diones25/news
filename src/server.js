@@ -2,7 +2,7 @@ const dotev = require('dotenv');
 const chalk = require('chalk');
 const app = require("./app.js");
 const conn = require('./db/conn.js');
-const Users = require('./models/Users.js');
+const User = require('./models/User.js');
 const News = require('./models/News.js');
 
 dotev.config();
