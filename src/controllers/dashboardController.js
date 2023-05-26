@@ -1,6 +1,6 @@
 
 const showCreate = (req, res) => {
-  res.send('Redenriza Admin cadastrar notícia')
+  res.render("pages/admin/create.ejs");
 }
 
 const create = (req, res) => {
