@@ -22,6 +22,10 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 //Setando o app para usar as rotas
 app.use(router);
 
+app.use((req, res) => {
+  res.render('404.ejs');
+})
+
 //Configuração para receber dados do body
 app.use(express.urlencoded({ extended: true }));
 
