@@ -1,10 +1,10 @@
 
 const signin = (req, res) => {
-  res.send('Redenriza a página de login');
+  res.render("pages/admin/signin.ejs");
 }
 
 const signup = (req, res) => {
-  res.send('Redenriza página de cadastro de login')
+  res.render("pages/admin/signup.ejs");
 }
 
 const signinCreate = (req, res) => {

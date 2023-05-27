@@ -1,0 +1,30 @@
+body {
+  background-color: #F5F5F5;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-box {
+  background-color: #fff;
+}
+
+#main-box h4 {
+  color: #364152;
+}
+
+#main-box button {
+  background-color: #3C4B64;
+  color: #fff;
+}
+
+#register-link {
+  margin-right: 5px;
+}
