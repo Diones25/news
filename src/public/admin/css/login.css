@@ -28,3 +28,46 @@ body {
 #register-link {
   margin-right: 5px;
 }
+
+@media (max-width: 575.98px) { 
+  #message-alert {
+    max-width: 100%;
+    width: 390px;
+  }
+}
+
+@media (min-width: 576px) {
+  #message-alert {
+    max-width: 100%;
+    width: 394px;
+  }
+}
+
+@media (min-width: 768px) { 
+  #message-alert {
+    max-width: 100%;
+    width: 394px;
+  }
+}
+
+
+@media (min-width: 992px) { 
+  #message-alert {
+    max-width: 100%;
+    width: 388px;
+  }
+}
+
+@media (min-width: 1200px) { 
+  #message-alert {
+    max-width: 100%;
+    width: 460px;
+  }
+}
+
+@media (min-width: 1400px) {  
+  #message-alert {
+    max-width: 100%;
+    width: 426px;
+  }
+}

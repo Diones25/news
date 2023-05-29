@@ -24,6 +24,6 @@ router.get('/signin', authController.signin);
 router.get('/signup', authController.signup);
 
 router.post('/signin', authController.signinCreate);//Rota para fazer login
-router.post('/signup/create', authController.signupCreate);//Rota para cadastrar login
+router.post('/signup', authController.signupCreate);//Rota para cadastrar login
 
 module.exports = router;
