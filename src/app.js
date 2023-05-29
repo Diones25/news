@@ -9,6 +9,12 @@ const flash = require('express-flash');
 
 const app = express();
 
+//Configuração para receber dados do body
+app.use(express.urlencoded({ extended: true }));
+
+//Configuração para permitir objetos JSON
+app.use(express.json());
+
 //Engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -25,44 +31,5 @@ app.use(router);
 app.use((req, res) => {
   res.render('404.ejs');
 })
-
-//Configuração para receber dados do body
-app.use(express.urlencoded({ extended: true }));
-
-//Configuração para permitir objetos JSON
-app.use(express.json());
-
-//Middleware de session
-// app.use(
-//   session({
-//     name: "session",
-//     secret: "bWluaGFoYXNoZGVlbmNydXB0YcOnw6NvQmFzZTY0QA==",
-//     resave: false,
-//     saveUninitialized: false,
-//     store: new FileStore({
-//       logFn: function() {},
-//       path: require('path').join(require('os').tmpdir(), 'sessions'),
-//     }),
-//     cookie: {
-//       secure: false,
-//       maxAge: 360000,
-//       expires: new Date(Date.now() + 360000),
-//       //httpOnly: false
-//       httpOnly: true
-//     }
-//   })
-// );
-
-// //flash messages
-// app.use(flash)
-
-// //Configurar sesions na resposta
-// app.use((req, res, next) => {
-//   if(req.session.userid) {
-//     res.locals.session = req.session
-//   }
-
-//   next();
-// });
 
 module.exports = app;

@@ -22,10 +22,10 @@
           A simple success alert—check it out!
         </div> -->
         
-        <div id="main-box" class="col-md-4 border rounded border-2 p-4">
+        <div id="main-box" class="col-xxl-4 col-xl-5 col-lg-5 border rounded border-2 p-4">
           <h4 class="card-title mb-5 mt-4 text-center">Criar uma conta</h4>
 
-          <form action="" method="post">
+          <form action="/signup/create" method="post">
 
             <div class="mb-3">
               <label for="nameInput" class="form-label">Seu nome:</label>
@@ -33,7 +33,7 @@
                 <span class="input-group-text" id="nome">
                   <img src="/admin/img/username.png" width="22" alt="">
                 </span>
-                <input type="text" id="nameInput" class="form-control" aria-label="Username" aria-describedby="nome">
+                <input type="text" name="name" id="nameInput" class="form-control" aria-label="Username" aria-describedby="nome">
               </div>
             </div>
 
@@ -45,7 +45,7 @@
                 </span>
 
 
-                <input id="statusSelect" class="form-control" list="datalistOptions" id="exampleDataList" aria-describedby="status">
+                <input name="status" id="statusSelect" class="form-control" list="datalistOptions" id="exampleDataList" aria-describedby="status">
                 <datalist id="datalistOptions">
                   <option value="Jornalista">
                   <option value="Editor-chefe">
@@ -59,7 +59,7 @@
                 <span class="input-group-text" id="email">
                   <img src="/admin/img/mail.png" width="22" alt="">
                 </span>
-                <input type="email" id="emailInput" class="form-control" aria-label="Username" aria-describedby="email">
+                <input type="email" name="email" id="emailInput" class="form-control" aria-label="Username" aria-describedby="email">
               </div>
             </div>
 
@@ -69,7 +69,7 @@
                 <span class="input-group-text" id="senha">
                   <img src="/admin/img/cadeado.png" width="22" alt="">
                 </span>
-                <input type="password" id="senhaInput" class="form-control" aria-label="Username" aria-describedby="senha">
+                <input type="password" name="password" id="senhaInput" class="form-control" aria-label="Username" aria-describedby="senha">
               </div>
             </div>
 
