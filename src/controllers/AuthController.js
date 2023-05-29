@@ -12,16 +12,13 @@ const signinCreate = (req, res) => {
 }
 
 const signupCreate = (req, res) => {
-  //const { email, status, password } = req.body;
-  const name = req.body.name;
-  const email = req.body.email;
-  const status = req.body.status;
-  const password = req.body.password;
+  const { name, email, status, password } = req.body;
 
-  console.log('Nome: ', name + '\n')
-  console.log('Email: ', email + '\n')
-  console.log('Status: ', status + '\n')
-  console.log('Senha: ', password + '\n')
+  const user = {
+    name,
+    email, 
+    status
+  }
 }
 
 
