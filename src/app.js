@@ -4,7 +4,6 @@ const router = require('./routes/routes.js');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swagger.json');
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
 const flash = require('express-flash');
 
 const app = express();
@@ -14,6 +13,16 @@ app.use(express.urlencoded({ extended: true }));
 
 //Configuração para permitir objetos JSON
 app.use(express.json());
+
+//Configurando sessões
+app.use(session({
+  secret: "sadNU¨%4sdho--Mijas76162¨%$&$&W!BxJMAKhs98¨&W*&",
+  resave: true,
+  saveUninitialized: true
+}));
+
+//Configurando flash messages
+app.use(flash());
 
 //Engine
 app.set('view engine', 'ejs');
