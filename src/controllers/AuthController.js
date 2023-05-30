@@ -82,9 +82,6 @@ const signinCreate = async (req, res) => {
       res.redirect("/admin/aprove");
     });
   }
-
-  
-  
 }
 
 const signupCreate = async (req, res) => {
