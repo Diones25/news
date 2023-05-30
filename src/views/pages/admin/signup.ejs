@@ -23,6 +23,12 @@
               <%= messages.messageError %>
           </div>                                           
         <% } %>
+
+        <% if(messages.message) { %>   
+          <div id="message-alert" class="alert alert-success" role="alert">
+              <%= messages.message %>
+          </div>                                           
+        <% } %>
         
         <div id="main-box" class="col-xxl-4 col-xl-5 col-lg-5 border rounded border-2 p-4">
           <h4 class="card-title mb-5 mt-4 text-center">Criar uma conta</h4>
@@ -50,7 +56,7 @@
                 <input name="status" id="statusSelect" class="form-control" list="datalistOptions" id="exampleDataList" aria-describedby="status">
                 <datalist id="datalistOptions">
                   <option value="jornalista">
-                  <option value="editor-chefe">
+                  <option value="editor">
                 </datalist>
               </div>
             </div>

@@ -48,23 +48,46 @@ const signupCreate = async (req, res) => {
     return;
   }
 
-   // const user = await User.findOne({
-  //   where: {
-  //     email: email
-  //   }
-  // });
+  if(password.length < 7) {
+    req.flash('messageError', 'A senha é deve ter 8 ou mais caracteres!');
+    req.session.save(() => {
+      res.redirect('/signup');
+    });
+    return;
+  }
+
+  const user = await User.findOne({
+    where: {
+      email: email
+    }
+  });
 
 
-  // if(user.email) {
-  //   console.log('O email já existe!')
-  //   console.log(user.email)
-  // }
+  if(user) {
+    req.flash('messageError', 'O usuário já existe!');
+    req.session.save(() => {
+      res.redirect('/signup');
+    });
+    return;
+  }
+
+  const salt = bcrypt.genSaltSync(10);
+  const hashPassword = bcrypt.hashSync(password, salt);
 
   const dataUser = {
     name,
     email, 
-    status
-  }
+    status,
+    password: hashPassword
+  }    
+  
+  await User.create(dataUser);
+
+  req.flash('message', 'Usuário adicionado com sucesso!')
+
+  req.session.save(() => {
+    res.redirect('/signup');
+  })
 }
 
 
