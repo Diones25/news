@@ -18,14 +18,16 @@
     <div class="row d-flex justify-content-center">
       <div id="main-container">
 
-        <!-- <div class="alert alert-success" role="alert">
-          A simple success alert—check it out!
-        </div> -->
+        <% if(messages.messageError) { %>   
+          <div id="message-alert" class="alert alert-danger" role="alert">
+              <%= messages.messageError %>
+          </div>                                           
+        <% } %>
         
         <div id="main-box" class="col-xxl-4 col-xl-5 col-lg-5 border rounded border-2 p-4">
           <h4 class="card-title mb-5 mt-4 text-center">Faça o login em nossa plataforma</h4>
 
-          <form action="" method="post">
+          <form action="/signin" method="post">
 
             <div class="mb-3">
               <label for="emailInput" class="form-label">Seu email:</label>
@@ -33,7 +35,7 @@
                 <span class="input-group-text" id="email">
                   <img src="/admin/img/mail.png" width="22" alt="">
                 </span>
-                <input type="text" id="emailInput" class="form-control" placeholder="example@gmail.com" aria-label="Username" aria-describedby="email">
+                <input type="email" name="email" id="emailInput" class="form-control" placeholder="example@gmail.com" aria-label="Username" aria-describedby="email">
               </div>
             </div>
 
@@ -43,7 +45,7 @@
                 <span class="input-group-text" id="senha">
                   <img src="/admin/img/cadeado.png" width="22" alt="">
                 </span>
-                <input type="password" id="senhaInput" class="form-control" placeholder="************" aria-label="Username" aria-describedby="senha">
+                <input type="password" name="password" id="senhaInput" class="form-control" placeholder="************" aria-label="Username" aria-describedby="senha">
               </div>
             </div>
 

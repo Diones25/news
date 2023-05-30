@@ -8,7 +8,7 @@ const create = (req, res) => {
 }
 
 const Showapprove = (req, res) => {
-  res.send('Redenriza Admin aprovar notícia')
+  res.render("pages/admin/aprove.ejs");
 }
 
 const approve = (req, res) => {
