@@ -3,6 +3,7 @@ const newController = require('../controllers/newsController.js');
 const dashboardController = require('../controllers/dashboardController.js');
 const authController = require('../controllers/AuthController.js');
 const checkAuth = require('../middlewares/checkAuth.js');
+const upload = require('../middlewares/upload.js');
 
 const router = Router();
 
@@ -15,7 +16,7 @@ router.get('/contact', newController.contact);
 
 //Rotas da Dasboard
 router.get('/admin/create', checkAuth, dashboardController.showCreate);
-router.post('/admin/create', dashboardController.create);
+router.post('/admin/create', checkAuth, upload.single("imagem"),dashboardController.create);
 
 router.get('/admin/aprove', checkAuth, dashboardController.Showapprove);
 router.put('/admin/aprove', dashboardController.approve);

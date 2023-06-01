@@ -8,27 +8,29 @@
     </div>
       
     <ul class="sidebar-nav mt-4" data-coreui="navigation" data-simplebar="">
-      
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/create">
-          <svg class="nav-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <title>arrow-circle-top</title>
-            <path d="M12 0.75c-6.213 0-11.25 5.037-11.25 11.25s5.037 11.25 11.25 11.25 11.25-5.037 11.25-11.25-5.037-11.25-11.25-11.25zM18.894 18.894c-1.757 1.752-4.182 2.835-6.859 2.835-5.365 0-9.715-4.349-9.715-9.715s4.349-9.715 9.715-9.715c5.365 0 9.715 4.349 9.715 9.715 0 1.365-0.282 2.664-0.79 3.843l0.024-0.063c-0.517 1.205-1.222 2.234-2.090 3.099l-0 0z"></path>
-            <path d="M6.671 11.298l1.061 1.061 3.518-3.518v8.784h1.5v-8.784l3.518 3.518 1.061-1.061-5.329-5.329-5.329 5.329z"></path>
-          </svg>          
-          Criar notícia
-        </a>
-      </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/aprove">
-          <svg class="nav-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <title>check</title>
-            <path d="M9.331 21.375l-0.346-0.352-0.185-0.183-4.040-4.041 0.002-0.003-3.922-3.922 4.576-4.576 3.917 3.917 9.341-9.341 4.576 4.576-9.869 9.874zM6.872 16.79l2.459 2.459 0.005-0.005 0.003 0.003 2.452-2.452 0.528-0.533 8.811-8.811-2.454-2.454-9.341 9.341-3.917-3.917-2.454 2.454 3.912 3.912z"></path>
-          </svg>
-          Aprovar notícia
-        </a>
-      </li>
+      <% if(user.status == "jornalista") { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/create">
+            <svg class="nav-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <title>arrow-circle-top</title>
+              <path d="M12 0.75c-6.213 0-11.25 5.037-11.25 11.25s5.037 11.25 11.25 11.25 11.25-5.037 11.25-11.25-5.037-11.25-11.25-11.25zM18.894 18.894c-1.757 1.752-4.182 2.835-6.859 2.835-5.365 0-9.715-4.349-9.715-9.715s4.349-9.715 9.715-9.715c5.365 0 9.715 4.349 9.715 9.715 0 1.365-0.282 2.664-0.79 3.843l0.024-0.063c-0.517 1.205-1.222 2.234-2.090 3.099l-0 0z"></path>
+              <path d="M6.671 11.298l1.061 1.061 3.518-3.518v8.784h1.5v-8.784l3.518 3.518 1.061-1.061-5.329-5.329-5.329 5.329z"></path>
+            </svg>          
+            Criar notícia
+          </a>
+        </li>
+      <%} else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/aprove">
+            <svg class="nav-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <title>check</title>
+              <path d="M9.331 21.375l-0.346-0.352-0.185-0.183-4.040-4.041 0.002-0.003-3.922-3.922 4.576-4.576 3.917 3.917 9.341-9.341 4.576 4.576-9.869 9.874zM6.872 16.79l2.459 2.459 0.005-0.005 0.003 0.003 2.452-2.452 0.528-0.533 8.811-8.811-2.454-2.454-9.341 9.341-3.917-3.917-2.454 2.454 3.912 3.912z"></path>
+            </svg>
+            Aprovar notícia
+          </a>
+        </li>
+      <% } %>
     </ul>
       
       <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
@@ -74,8 +76,51 @@
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <div class="row">
+            <div class="col-lg-6">
+              <% if(messages.messageError) { %>   
+                <div id="message-alert" class="alert alert-danger" role="alert">
+                    <%= messages.messageError %>
+                </div>                                           
+              <% } %>
+      
+              <% if(messages.message) { %>   
+                <div id="message-alert" class="alert alert-success" role="alert">
+                    <%= messages.message %>
+                </div>                                           
+              <% } %>
+            </div>
             <h4 class="card-title mb-0">Submeter notícia para avaliação</h4>
+            
 
+            <div class="col-lg-6 mt-5">
+
+              <form action="/admin/create" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="titulo" class="form-label">Título:</label>
+                  <input type="text" name="titulo" class="form-control" id="titulo">
+                </div>
+                <div class="mb-3">
+                  <label for="descricao" class="form-label">Descrição:</label>
+                  <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="imagem" class="form-label">Imagem:</label>
+                  <input type="file" name="imagem" class="form-control" id="imagem">
+                </div>
+                <div class="mb-3">
+                  <button 
+                    type="submit" 
+                    class="btn btn-success text-white" 
+                    <% if(user.status == "editor") { %>   
+                      disabled                                      
+                    <% } %>                    
+                  >
+                  Cadastrar
+                </button>
+                </div>
+              </form>
+
+            </div>
           </div>
         </div>
       </div>

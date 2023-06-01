@@ -11,9 +11,6 @@ const signup = (req, res) => {
 
 const signinCreate = async (req, res) => {
   const { email, password } = req.body;
-  
-  console.log("Email: ", email)
-  console.log("Senha: ", password);
 
   if(!email) {
     req.flash('messageError', 'Email é obrigatório!');
@@ -67,7 +64,6 @@ const signinCreate = async (req, res) => {
   })
 
   if(userStatus.status == "jornalista") {
-    console.log("É jornalista");
     req.flash("message", "Login realizado com sucesso!");
 
     req.session.save(() => {
@@ -75,7 +71,6 @@ const signinCreate = async (req, res) => {
     });
   }
   else {
-    console.log('Não é jornalista')
     req.flash("message", "Login realizado com sucesso!");
 
     req.session.save(() => {
