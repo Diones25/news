@@ -2,7 +2,12 @@ const User = require('../models/User.js');
 const News = require('../models/News.js');
 
 const showCreate = async (req, res) => {
-  res.render("pages/admin/create.ejs"); 
+  const user = await User.findOne({
+    where: {
+      id: req.session.userid
+    }
+  });
+  res.render("pages/admin/create.ejs", { user }); 
 }
 
 const create = async (req, res) => {
