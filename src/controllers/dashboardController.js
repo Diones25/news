@@ -83,10 +83,6 @@ const Showapprove = async (req, res) => {
       id: req.session.userid
     }
   });
-  console.log("ID DO USUÁRIO LOGADO ==> ",user.id)
-  console.log("ID DO USUÁRIO LOGADO ==> ",user.name)
-  console.log("ID DO USUÁRIO LOGADO ==> ",user.email)
-  console.log("ID DO USUÁRIO LOGADO ==> ",user.status)
   res.render("pages/admin/aprove.ejs", { user });
 }
 

@@ -8,7 +8,7 @@ const News = db.define('News', {
         allowNull: false
     },
     descricao: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     imagem: {
