@@ -55,7 +55,6 @@ const signinCreate = async (req, res) => {
   }
 
   req.session.userid = user.id;
-  console.log('Id do usuário logado ===> ', req.session.userid);
 
   const userStatus = await User.findOne({
     where: {

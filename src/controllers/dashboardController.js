@@ -1,5 +1,6 @@
 const User = require('../models/User.js');
 const News = require('../models/News.js');
+const moment = require('moment');
 
 const showCreate = async (req, res) => {
   const user = await User.findOne({
@@ -83,15 +84,40 @@ const Showapprove = async (req, res) => {
       id: req.session.userid
     }
   });
-  res.render("pages/admin/aprove.ejs", { user });
+
+  const news = await News.findAll({
+    where: {
+      status: "created"
+    }
+  }); 
+
+  res.render("pages/admin/aprove.ejs", { user, news });
 }
 
 const approve = (req, res) => {
   res.send('Admin aprovar notícia')
 }
 
-const approveDetails = (req, res) => {
-  res.send('Admin aprovar -> Detalhe da notícia')
+const approveDetails = async (req, res) => {
+  const { id } = req.params 
+
+  const user = await User.findOne({
+    where: {
+      id: req.session.userid
+    }
+  });
+
+  const news = await News.findOne({
+    where: {
+      id: id
+    }
+  }); 
+
+  let date = news.updatedAt
+
+  let data = moment(date).format("DD/MM/YYYY");
+
+  res.render("pages/admin/aproveDetails.ejs", { user, news, data });
 }
 
 module.exports = {
