@@ -19,8 +19,8 @@ router.get('/admin/create', checkAuth, dashboardController.showCreate);
 router.post('/admin/create', checkAuth, upload.single("imagem"),dashboardController.create);
 
 router.get('/admin/aprove', checkAuth, dashboardController.Showapprove);
-router.post('/admin/aprove', dashboardController.approve);
-router.post('/admin/remove', dashboardController.remove);
+router.post('/admin/aprove', checkAuth, dashboardController.approve);
+router.post('/admin/remove', checkAuth, dashboardController.remove);
 
 router.get('/admin/aprove/:id', dashboardController.approveDetails);
 
