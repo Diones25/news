@@ -19,7 +19,8 @@ router.get('/admin/create', checkAuth, dashboardController.showCreate);
 router.post('/admin/create', checkAuth, upload.single("imagem"),dashboardController.create);
 
 router.get('/admin/aprove', checkAuth, dashboardController.Showapprove);
-router.put('/admin/aprove', dashboardController.approve);
+router.post('/admin/aprove', dashboardController.approve);
+router.post('/admin/remove', dashboardController.remove);
 
 router.get('/admin/aprove/:id', dashboardController.approveDetails);
 
@@ -27,8 +28,8 @@ router.get('/admin/aprove/:id', dashboardController.approveDetails);
 router.get('/signin', authController.signin);
 router.get('/signup', authController.signup);
 
-router.post('/signin', authController.signinCreate);//Rota para fazer login
-router.post('/signup', authController.signupCreate);//Rota para cadastrar login
+router.post('/signin', authController.signinCreate);
+router.post('/signup', authController.signupCreate);
 
 router.get('/logout', authController.logout);
 module.exports = router;

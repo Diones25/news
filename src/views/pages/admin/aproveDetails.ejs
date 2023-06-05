@@ -96,8 +96,29 @@
                     </span>
                   </p>
                   <div class="d-flex justify-content-end">
-                    <a href="" class="btn btn-danger text-white">Reprovar</a>
-                    <a href="" class="btn btn-success text-white ms-5">Aprovar</a>
+                    <form action="/admin/remove" method="post">
+                      <input type="hidden" name="id" value="<%= news.id %>">
+                      <input 
+                        type="submit" 
+                        value="Reprovar" 
+                        class="btn btn-danger text-white"
+                        <% if(user.status == "jornalista") { %>   
+                          disabled                                      
+                        <% } %>
+                      >
+                    </form>
+
+                    <form action="/admin/aprove" method="post">
+                      <input type="hidden" name="id" value="<%= news.id %>">
+                      <input 
+                        type="submit" 
+                        value="Aprovar" 
+                        class="btn btn-success text-white ms-5"
+                        <% if(user.status == "jornalista") { %>   
+                          disabled                                      
+                        <% } %>
+                      >
+                    </form>
                   </div>
                 </div>
               </div>

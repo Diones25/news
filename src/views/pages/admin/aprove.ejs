@@ -75,9 +75,15 @@
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <div class="row">
-            <div><%= user.name %></div> <br>
-            <div><%= user.email %></div> <br>
-            <div><%= user.status %></div> <br>
+            
+            <div class="col-lg-6">      
+              <% if(messages.message) { %>   
+                <div id="message-alert" class="alert alert-success" role="alert">
+                    <%= messages.message %>
+                </div>                                           
+              <% } %>
+            </div>
+
             <h4 class="card-title mb-0">Notícias Submetidas</h4>
               
             <div class="mt-5">
@@ -91,7 +97,7 @@
                     </h5>
                     <div class="card-text">
                       <small class="text-body-secondary">POR: <%= n.author.toUpperCase() %></small>
-                      <small class="text-body-secondary ms-5">01/06/2023</small>
+                      <small class="text-body-secondary ms-5">11/06/2023</small>
                     </div>
                     <p class="card-text mt-2">
                       <span id="textlimited">
