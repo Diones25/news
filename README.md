@@ -60,7 +60,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 ```
 *Parâmetro 'id' da notícia
 ##### Essa rota renderiza a página de detalhe da notícia selecionada anteriormente.
-![img](./src/public/img/lastedNews.png)
+![img](./src/public/img/details.png)
 
 
 
