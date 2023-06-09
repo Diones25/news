@@ -59,7 +59,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
   GET /news/:id
 ```
 *Parâmetro 'id' da notícia
-##### Essa rota renderiza a página de últimas notícias cadastradas.
+##### Essa rota renderiza a página de detalhe da notícia selecionada anteriormente.
 ![img](./src/public/img/lastedNews.png)
 
 
