@@ -46,9 +46,19 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página de últimas notícias
 
 ```
-  GET /
+  GET /lastedNews
 ```
 *Sem parâmetros
+##### Essa rota renderiza a página de últimas notícias cadastradas.
+![img](./src/public/img/lastedNews.png)
+
+
+#### Renderiza página de detalhe da notícia
+
+```
+  GET /news/:id
+```
+*Parâmetro 'id' da notícia
 ##### Essa rota renderiza a página de últimas notícias cadastradas.
 ![img](./src/public/img/lastedNews.png)
 
@@ -57,7 +67,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página sobre
 
 ```
-  GET /
+  GET /about
 ```
 *Sem parâmetros
 ##### Essa rota renderiza a página sobre com os dados institucionais do site e seus integrantes
@@ -67,7 +77,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página de contato
 
 ```
-  GET /
+  GET /contact
 ```
 *Sem parâmetros
 ##### Essa rota renderiza a página de contato com os dados de contato e endereço 
@@ -77,7 +87,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página de login
 
 ```
-  GET /
+  GET /signin
 ```
 *Sem parâmetros
 ##### Essa rota renderiza a página de login onde o usuário cadastrado deverá fazer o o login para ter acesso a dashboard.
@@ -87,7 +97,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página de registro de login
 
 ```
-  GET /
+  GET /signup
 ```
 *Sem parâmetros
 ##### Essa rota renderiza a página de registro de login onde um novo usuário deve realizar seu cadastro no sistema para poder realizar seu login posteriormente.
@@ -97,7 +107,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página de cadastro de notícia
 
 ```
-  GET /
+  GET /admin/create
 ```
 *Sem parâmetros
 ##### Essa rota renderiza a página de cadastro de notícias onde o usuário com nível de acesso jornalista poderá cadastrar uma nova notícia.
@@ -107,7 +117,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página de lista notícias para aprovação
 
 ```
-  GET /
+  GET /admin/aprove
 ```
 *Sem parâmetros
 ##### Essa rota renderiza a página de aprovar de notícias onde o usuário com nível de acesso editor irá visualizar a notícias a serem analisadas.
@@ -118,9 +128,9 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 #### Renderiza página de aprovar de notícia
 
 ```
-  GET /
+  GET /admin/aprove/:id
 ```
-*Sem parâmetros
+*Parâmetro 'id' da notícia
 ##### Essa rota renderiza a página de detalhe da notícia que será analisada para aprovação ou reprovação onde o usuário com nível de acesso editor irá realizar tal operação.
 ![img](./src/public/img/adminAproveDetails.png)
 
