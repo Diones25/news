@@ -15,7 +15,8 @@ const signup = (req, res) => {
 const signinCreate = async (req, res) => {
   const { email, password } = req.body;
 
-  //Se não for enviado o email pelo formulário, mostra uma mensagem de erro
+  //Se não for enviado o email pelo formulário mostra uma mensagem de erro
+
   if(!email) {
     req.flash('messageError', 'Email é obrigatório!');
     req.session.save(() => {
@@ -25,6 +26,7 @@ const signinCreate = async (req, res) => {
   }
 
   //Se não for enviado a senha pelo formulário, mostra uma mensagem de erro
+
   if(!password) {
     req.flash('messageError', 'A senha é obrigatória!');
     req.session.save(() => {
@@ -41,6 +43,7 @@ const signinCreate = async (req, res) => {
   })
 
   //Se o usuário não existir no banco de dados, será mostrado uma mensagem de erro
+
   if(!user) {
     req.flash('messageError', 'Usuário não encontrado!')
 
@@ -56,6 +59,7 @@ const signinCreate = async (req, res) => {
   const passwordMatch = bcrypt.compareSync(password, user.password);
 
   //Se as duas senhas não corresponderem, será mostrado uma mensagem de erro
+
   if(!passwordMatch) {
     req.flash('messageError', 'Email ou Senha incorreta!')
 
@@ -72,6 +76,7 @@ const signinCreate = async (req, res) => {
 
   //Essa busca é necessária para buscar o status de acesso
   //do usuário que está se conectando ao sistema
+
   const userStatus = await User.findOne({
     where: {
       id: req.session.userid
@@ -79,6 +84,7 @@ const signinCreate = async (req, res) => {
   })
 
   //Se o status de acesso for 'jornalista', então vai direto para a tela de cadastro de notícias
+
   if(userStatus.status == "jornalista") {
     req.flash("message", "Login realizado com sucesso!");
 
@@ -86,7 +92,9 @@ const signinCreate = async (req, res) => {
       res.redirect("/admin/create");
     });
   }
+
   //Se o status de acesso for 'editor', então vai direto para a tela de aprovação/reprovação de notícias
+
   else {
     req.flash("message", "Login realizado com sucesso!");
 
@@ -97,6 +105,7 @@ const signinCreate = async (req, res) => {
 }
 
 //Este método tem a função de criar um novo usuário 
+
 const signupCreate = async (req, res) => {
   const { name, email, status, password } = req.body;
 
@@ -110,6 +119,7 @@ const signupCreate = async (req, res) => {
   }
   
   //Verifica se o tipo de acesso foi inserido, caso contrário mostra a mensagem de erro
+
   if(!status) {
     req.flash('messageError', 'O nível de acesso é obrigatório!');
     req.session.save(() => {
@@ -128,6 +138,7 @@ const signupCreate = async (req, res) => {
   }
 
   //Verifica se a senha do novo usuário foi inserida, caso contrário mostra a mensagem de erro
+
   if(!password) {
     req.flash('messageError', 'A senha é obrigatória!');
     req.session.save(() => {
@@ -137,6 +148,7 @@ const signupCreate = async (req, res) => {
   }
 
   //Verifica se o tamanho mínimo da senha é maior que 7, ou seja, deve ter no mínimo 8 caracteres,
+
   //caso contrário mostra a mensagem de erro
   if(password.length < 7) {
     req.flash('messageError', 'A senha é deve ter 8 ou mais caracteres!');
@@ -153,6 +165,7 @@ const signupCreate = async (req, res) => {
   });
 
   //Se o usuário que está sendo criado já existe no banco de dados, então será mostrado uma mensagem de erro
+
   if(user) {
     req.flash('messageError', 'O usuário já existe!');
     req.session.save(() => {
@@ -167,16 +180,18 @@ const signupCreate = async (req, res) => {
   const hashPassword = bcrypt.hashSync(password, salt);
 
   //Objeto com os dados do usuário que será cadastrado no banco de dados
+
   const dataUser = {
     name,
     email, 
     status,
     password: hashPassword
   }    
-  
+
   //A função assíncrona abaixo cadastra um novo usuário; mostra uma
   //mensagem de feedback; redireciona para a mesma página de cadastro
   //de usuário e mostra uma mensagem de sucesso.
+
   await User.create(dataUser);
 
   req.flash('message', 'Usuário adicionado com sucesso!')
