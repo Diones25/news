@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
-//const db = require('../db/conn.js');
-//const User = require('./User.js');
+const db = require('../db/conn.js');
+const User = require('./User.js');
 
-/*const News = db.define('News', {
+const News = db.define('News', {
     titulo: {
         type: DataTypes.STRING,
         allowNull: false
@@ -32,4 +32,4 @@ const { DataTypes } = require('sequelize');
 News.belongsTo(User);
 User.hasMany(News);
 
-module.exports = News;*/
+module.exports = News;
