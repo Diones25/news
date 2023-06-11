@@ -24,5 +24,8 @@
     "pg": "^8.11.0",
     "sequelize": "^6.31.1",
     "swagger-ui-express": "^4.6.3"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
   }
 }
