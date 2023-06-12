@@ -1,1 +1,147 @@
-<h1>Sobre</h1>
+<%- include('../../partials/news/header.ejs'); -%>
+
+  <!-- Preloader Start -->
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+          <img src="/news/img/logo/logo.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+
+    <div class="header-area">
+      <div class="main-header "> 
+
+        <div class="header-mid gray-bg">
+          <div class="container">
+            <div class="row d-flex align-items-center">
+              <!-- Logo -->
+              <div class="col-xl-3 col-lg-3 col-md-3 d-none d-md-block">
+                <div class="logo">
+                  <a href="index.html"><img src="/news/img/logo/logo.png" alt=""></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%- include('../../partials/news/navbar.ejs'); -%>
+        
+      </div>
+    </div>
+    <!-- Header End -->
+  </header>
+
+  <main>
+    <div class="about-details section-padding30">
+        <div class="container">
+            <div class="row">
+                <div class="offset-xl-1 col-lg-8">
+                    <div class="about-details-cap mb-50">
+                        <h4>Nossa Visão</h4>
+                        <p>Ser a maior e a melhor empresa de comunicação do Brasil</p>
+                    
+                    </div>
+                    <div class="about-details-cap mb-50">
+                        <h4>Nossa Missão</h4>
+                        <p>Unir as pessoas eliminando distâncias, com informações e tecnologias que desenvolvam o país através da busca da excelência e inovação em serviços de comunicação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--? About Area Start-->
+    <div class="support-company-area pt-100 pb-100 section-bg fix" data-background="/news/img/section_bg02.jpg">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="support-location-img">
+                        <img src="/news/img/about.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="right-caption">
+                        <!-- Section Tittle -->
+                        <div class="section-tittles section-tittles2 mb-50">
+                            <h2>Independencia Editoral garantida</h2>
+                        </div>
+                        <div class="support-caption">
+            
+                            <p class="mb-5">O iG possui o compromisso formal de garantir aos seus 
+                                jornalistas o ambiente propício para que sejam garantidos 
+                                os critérios para produção e distribuição de conteúdos 
+                                voltados apenas para o interesse público de forma isenta 
+                                e independente. Todos os seus jornalistas possuem a garantia 
+                                de que não receberão nenhuma interferência por Interesses 
+                                não relacionados ao buscado pela verdade e isenção na 
+                                construção dos seus conteúdos.
+                            </p>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Area End-->
+    <!-- Team Start -->
+    <div class="team-area section-padding30">
+        <div class="container">
+            <div class="row">
+                <div class="cl-xl-7 col-lg-8 col-md-10">
+                    <!-- Section Tittle -->
+                    <div class="section-tittles mb-70">
+                        <span><strong>Membros da nossa equipe</strong></span>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <!-- single Tem -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                    <div class="single-team mb-30">
+                        <div class="team-img">
+                            <img src="/news/img/team2.png" alt="">
+                        </div>
+                        <div class="team-caption">
+                            <h3><a href="#">Ethan Welch</a></h3>
+                            <span>UX Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                    <div class="single-team mb-30">
+                        <div class="team-img">
+                            <img src="/news/img/team3.png" alt="">
+                        </div>
+                        <div class="team-caption">
+                            <h3><a href="#">Ethan Welch</a></h3>
+                            <span>UX Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
+                    <div class="single-team mb-30">
+                        <div class="team-img">
+                            <img src="/news/img/team1.png" alt="">
+                        </div>
+                        <div class="team-caption">
+                            <h3><a href="#">Ethan Welch</a></h3>
+                            <span>UX Designer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+  </main>
+
+  <%- include('../../partials/news/footer.ejs'); -%>
+
+</html>
