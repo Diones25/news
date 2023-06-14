@@ -2,8 +2,7 @@ const authController = require('../../src/controllers/AuthController');
 const User = require('../../src/models/User.js');
 
 jest.mock('../../src/models/User.js', () => ({
-  signin: jest.fn(),
-  signup: jest.fn(),
+  findOne: jest.fn(),
 }));
 
 describe('Controlador de Autenticação', () => {
