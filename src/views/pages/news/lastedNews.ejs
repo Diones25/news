@@ -51,17 +51,17 @@
                 </div>
                 <div class="whats-right-cap">
                   <div class="d-flex flex-column">
-                    <h4 class="text-dark"><%= n.titulo %></h4>
+                    <h5 class="text-dark"><%= n.titulo %></h5>
                     <span class="d-flex flex-row">
-                      <div class="mr-5">POR: <%= n.author.toUpperCase() %></div>
+                      <h4 class="mr-5">POR: <%= n.author.toUpperCase() %></h4>
                     </span>
                   </div>
                   <h4>
-                    <p id="desciptionNews">
-                      <a href="latest_news.html">
+                    <a href="/news/<%= n.id %>">
+                      <p id="desciptionNews">
                         <%=  n.descricao %>
-                      </a>
-                    </p>
+                      </p>
+                    </a>
                   </h4>                  
                 </div>
               </div>
