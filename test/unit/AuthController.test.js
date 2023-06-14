@@ -1,5 +1,4 @@
 const authController = require('../../src/controllers/AuthController');
-const User = require('../../src/models/User.js');
 
 jest.mock('../../src/models/User.js', () => ({
   findOne: jest.fn(),
@@ -32,6 +31,40 @@ describe('Controlador de Autenticação', () => {
     });
   });
 
+  describe('signupCreate()', () => {
+    let req;
+    let res;
+    let redirectMock;
+
+    beforeEach(() => {
+      req = {
+        body: {},
+        flash: jest.fn(),
+        session: {
+          save: jest.fn(),
+        },
+      };
+      redirectMock = jest.fn();
+      res = {
+        redirect: redirectMock,
+      };
+    });
+
+    it('deve redirecionar para a página de cadastro de login com mensagem de erro se o nome não for fornecido', async () => {
+      await authController.signupCreate(req, res);
+
+      expect(req.flash).toHaveBeenCalledWith('messageError', 'Nome é obrigatório!');
+      expect(req.session.save).toHaveBeenCalled();
+      expect(redirectMock).not.toHaveBeenCalled();
+
+      // Verificar o redirecionamento somente após o session.save()
+      req.session.save.mockImplementationOnce(callback => {
+        callback();
+        expect(redirectMock).toHaveBeenCalledWith('/signup');
+      });
+    });
+  });
+  
   describe('logout()', () => {
     it('deve destruir a sessão e redirecionar para a página de login', () => {
       const req = {
@@ -50,5 +83,3 @@ describe('Controlador de Autenticação', () => {
     });
   });
 });
-
-  
