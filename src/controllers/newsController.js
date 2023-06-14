@@ -3,8 +3,14 @@ const moment = require('moment');
 
 //Esse método rendenriza a tela inicia do site 
 // e é também onde terá a listagem de todas das notícias aprovadas
-const home = (req, res) => {
-  res.render("pages/news/home.ejs");
+const home = async (req, res) => {
+  const news = await News.findAll({
+    where: {
+      status: "approved"
+    }
+  });
+
+  res.render("pages/news/home.ejs", { news });
 }
 
 //Esse método redenriza os detalhes da notícia

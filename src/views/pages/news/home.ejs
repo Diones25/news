@@ -47,51 +47,26 @@
               <div class="slider-active">
 
                 <!-- Single -->
+                <% news.forEach(n => { %>          
                 <div class="single-slider">
                   <div class="trending-top mb-30">
-                    <div class="trend-top-img">
-                      <img src="/news/img/trending/trending_top2.jpg" alt="">
-                      <div class="trend-top-cap">
-                        <h2>
-                          <a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s"
-                            data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a>
-                          </h2>
-                        <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">by Alice cloe - Jun 19,
-                          2020</p>
-                      </div>
+                      <div class="trend-top-img">
+                        <img src="/uploads/<%= n.imagem %>" alt="">
+                        <div class="trend-top-cap">
+                          <h2>
+                            <a href="/news/<%= n.id %>" data-animation="fadeInUp" data-delay=".4s"
+                              data-duration="1000ms">
+                              <%= n.titulo %>
+                            </a>
+                            </h2>
+                          <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">
+                            por <%= n.author %>
+                          </p>
+                        </div>
+                      </div>                                                                  
                     </div>
                   </div>
-                </div>
-                <!-- Single -->
-
-                <div class="single-slider">
-                  <div class="trending-top mb-30">
-                    <div class="trend-top-img">
-                      <img src="/news/img/trending/trending_top02.jpg" alt="">
-                      <div class="trend-top-cap">
-                        <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s"
-                            data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
-                        <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">by Alice cloe - Jun 19,
-                          2020</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Single -->
-                <div class="single-slider">
-                  <div class="trending-top mb-30">
-                    <div class="trend-top-img">
-                      <img src="/news/img/trending/trending_top03.jpg" alt="">
-                      <div class="trend-top-cap">
-                        <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s"
-                            data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
-                        <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">by Alice cloe - Jun 19,
-                          2020</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  <% }) %>
 
               </div>
             </div>
@@ -104,113 +79,32 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
-              <div class="whats-right-single mb-20">
-                <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
-                </div>
-                <div class="whats-right-cap">
-                  <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
-                    <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
-                    </span>
+          <% news.forEach(n => { %>          
+            <div class="col-lg-12 mb-2">          
+              <div class="whats-news-wrapper">              
+                <div class="whats-right-single mb-20">
+                  <div class="whats-right-img">
+                    <img src="/uploads/<%= n.imagem %>" alt="">
                   </div>
-                  <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
-                  </h4>                  
+                  <div class="whats-right-cap">
+                    <div class="d-flex flex-column">
+                      <h5 class="text-dark"><%= n.titulo %></h5>
+                      <span class="d-flex flex-row">
+                        <h4 class="mr-5">POR: <%= n.author.toUpperCase() %></h4>
+                      </span>
+                    </div>
+                    <h4>
+                      <a href="/news/<%= n.id %>">
+                        <p id="desciptionNews">
+                          <%=  n.descricao %>
+                        </p>
+                      </a>
+                    </h4>                  
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
-              <div class="whats-right-single mb-20">
-                <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
-                </div>
-                <div class="whats-right-cap">
-                  <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
-                    <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
-                    </span>
-                  </div>
-                  <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
-                  </h4>                  
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
-              <div class="whats-right-single mb-20">
-                <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
-                </div>
-                <div class="whats-right-cap">
-                  <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
-                    <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
-                    </span>
-                  </div>
-                  <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
-                  </h4>                  
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
-              <div class="whats-right-single mb-20">
-                <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
-                </div>
-                <div class="whats-right-cap">
-                  <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
-                    <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
-                    </span>
-                  </div>
-                  <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
-                  </h4>                  
-                </div>
-              </div>
-            </div>
-          </div>
+          <% }) %>
 
         </div>
       </div>
