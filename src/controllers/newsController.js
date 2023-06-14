@@ -1,4 +1,5 @@
 const News = require('../models/News.js');
+const moment = require('moment');
 
 //Esse método rendenriza a tela inicia do site 
 // e é também onde terá a listagem de todas das notícias aprovadas
@@ -7,8 +8,21 @@ const home = (req, res) => {
 }
 
 //Esse método redenriza os detalhes da notícia
-const newsDetail = (req, res) => {
-  res.render("pages/news/newsDetail.ejs");
+const newsDetail = async (req, res) => {
+  const { id } = req.params
+
+  const news = await News.findOne({
+    where: {
+      id: id
+    }
+  });
+
+  let date = news.updatedAt
+
+  let data = moment(date).format("DD/MM/YYYY"); 
+
+  res.render("pages/news/newsDetail.ejs", { news, data }); 
+  
 }
 
 //Esse método rendenriza uma nova tela com as últimas notícias cadastrada
