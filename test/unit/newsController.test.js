@@ -2,41 +2,45 @@ const newsController = require('../../src/controllers/newsController');
 
 describe('News Controller', () => {
   describe('home()', () => {
-    it('deve renderizar a página inicial', () => {
+    it('deve renderizar a página inicial', async () => {
       const req = {};
       const res = {
         render: jest.fn(),
       };
 
-      newsController.home(req, res);
+      await newsController.home(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/home.ejs');
+      expect(res.render).toHaveBeenCalledWith('pages/news/home.ejs', { news: expect.anything() });
     });
   });
 
   describe('newsDetail()', () => {
-    it('deve renderizar a página de detalhes da notícia', () => {
-      const req = {};
+    it('deve renderizar a página de detalhes da notícia', async () => {
+      const req = {
+        params: {
+          id: 1, // Substitua pelo ID válido da notícia para testar o detalhe da notícia
+        },
+      };
       const res = {
         render: jest.fn(),
       };
 
-      newsController.newsDetail(req, res);
+      await newsController.newsDetail(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/newsDetail.ejs');
+      expect(res.render).toHaveBeenCalledWith('pages/news/newsDetail.ejs', { news: expect.anything(), data: expect.anything() });
     });
   });
 
   describe('lastedNews()', () => {
-    it('deve renderizar a página de últimas notícias', () => {
+    it('deve renderizar a página de últimas notícias', async () => {
       const req = {};
       const res = {
         render: jest.fn(),
       };
 
-      newsController.lastedNews(req, res);
+      await newsController.lastedNews(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/lastedNews.ejs');
+      expect(res.render).toHaveBeenCalledWith('pages/news/lastedNews.ejs', { news: expect.anything() });
     });
   });
 
