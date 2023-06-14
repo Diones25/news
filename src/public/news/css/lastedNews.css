@@ -1,0 +1,10 @@
+#desciptionNews {
+  font-size: 16px;
+  color: #051441;
+  cursor: pointer;
+}
+#desciptionNews:hover {
+  color: #FF2143;
+  webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
+}

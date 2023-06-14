@@ -43,112 +43,33 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
+          <% news.forEach(n => { %>                    
+            <div class="whats-news-wrapper mb-2">              
               <div class="whats-right-single mb-20">
                 <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
+                  <img src="/uploads/<%= n.imagem %>" alt="">
                 </div>
                 <div class="whats-right-cap">
                   <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
+                    <h4 class="text-dark"><%= n.titulo %></h4>
                     <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
+                      <div class="mr-5">POR: <%= n.author.toUpperCase() %></div>
                     </span>
                   </div>
                   <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
+                    <p id="desciptionNews">
+                      <a href="latest_news.html">
+                        <%=  n.descricao %>
+                      </a>
+                    </p>
                   </h4>                  
                 </div>
               </div>
             </div>
-          </div>
+          <% }) %>
 
           <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
-              <div class="whats-right-single mb-20">
-                <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
-                </div>
-                <div class="whats-right-cap">
-                  <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
-                    <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
-                    </span>
-                  </div>
-                  <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
-                  </h4>                  
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
-              <div class="whats-right-single mb-20">
-                <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
-                </div>
-                <div class="whats-right-cap">
-                  <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
-                    <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
-                    </span>
-                  </div>
-                  <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
-                  </h4>                  
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-12 mb-2">
-            <div class="whats-news-wrapper">              
-              <div class="whats-right-single mb-20">
-                <div class="whats-right-img">
-                  <img src="/news/img/Street-Fighter-6.jpg" alt="">
-                </div>
-                <div class="whats-right-cap">
-                  <div class="d-flex flex-column">
-                    <h4 class="text-dark">Street Fighter 6 permitirá download separado de cada um dos seus modos</h4>
-                    <span class="d-flex flex-row">
-                      <p class="mr-5">Diones</p>
-                      <p>Jun 19, 2020</p>
-                    </span>
-                  </div>
-                  <h4>
-                    <a href="latest_news.html">
-                      A Capcom já abriu uma página oficial de Street Fighter 6 dentro da Loja Xbox e algumas informações curiosas
-                      já começaram a serem disponibilizadas ao público. Uma delas é a possibilidade de você poder fazer o download
-                      de forma separada dos modos Battle Hub, World Tour e Fighting Ground - ou seja, você pode baixar apenas o necessário
-                      para poder se divertir, deixando o restante de lado caso seja a sua preferência.
-                    </a>
-                  </h4>                  
-                </div>
-              </div>
-            </div>
+            
           </div>
 
         </div>

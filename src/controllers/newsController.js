@@ -1,3 +1,4 @@
+const News = require('../models/News.js');
 
 //Esse método rendenriza a tela inicia do site 
 // e é também onde terá a listagem de todas das notícias aprovadas
@@ -12,8 +13,15 @@ const newsDetail = (req, res) => {
 
 //Esse método rendenriza uma nova tela com as últimas notícias cadastrada
 //da notícia mais atual até a mais antiga
-const lastedNews = (req, res) => {
-  res.render("pages/news/lastedNews.ejs");
+const lastedNews = async (req, res) => {
+  const news = await News.findAll({
+    where: {
+      status: "approved"
+    },
+    order: [['id', 'DESC']]
+  });
+
+  res.render("pages/news/lastedNews.ejs", { news });
 }
 
 //Redenriza a tela sobre
