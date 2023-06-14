@@ -78,6 +78,44 @@ describe('Controlador de Autenticação', () => {
         expect(redirectMock).toHaveBeenCalledWith('/signup');
       });
     });
+
+    it('deve redirecionar para a página de cadastro de login com mensagem de erro se o email não for fornecido', async () => {
+      req.body.name = 'John Doe'; // Nome fornecido
+      req.body.status = 'jornalista'; // Status de acesso fornecido
+    
+      await authController.signupCreate(req, res);
+    
+      expect(req.flash).toHaveBeenCalledWith('messageError', 'Email é obrigatório!');
+      expect(req.session.save).toHaveBeenCalled();
+      expect(redirectMock).not.toHaveBeenCalled();
+    
+      // Verificar o redirecionamento somente após o session.save()
+      req.session.save.mockImplementationOnce(callback => {
+        callback();
+        expect(redirectMock).toHaveBeenCalledWith('/signup');
+      });
+    });
+
+    it('deve redirecionar para a página de cadastro de login com mensagem de erro se a senha não for fornecida', async () => {
+      req.body.name = 'John Doe'; // Nome fornecido
+      req.body.status = 'jornalista'; // Status de acesso fornecido
+      req.body.email = 'john.doe@example.com'; // Email fornecido
+    
+      await authController.signupCreate(req, res);
+    
+      expect(req.flash).toHaveBeenCalledWith('messageError', 'A senha é obrigatória!');
+      expect(req.session.save).toHaveBeenCalled();
+      expect(redirectMock).not.toHaveBeenCalled();
+    
+      // Verificar o redirecionamento somente após o session.save()
+      req.session.save.mockImplementationOnce(callback => {
+        callback();
+        expect(redirectMock).toHaveBeenCalledWith('/signup');
+      });
+    });
+    
+    
+    
   });
   
   
