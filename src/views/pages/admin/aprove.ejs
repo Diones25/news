@@ -88,31 +88,27 @@
               
             <div class="mt-5">
 
-              <% if(news.lenght > 0) { %>
-                <% news.forEach(n => { %>                    
-                  <div class="card w-75 d-flex flex-row mb-3">
-                    <img src="/uploads/<%= n.imagem %>" class="img-fluid rounded-start w-25" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        <%= n.titulo %>
-                      </h5>
-                      <div class="card-text">
-                        <small class="text-body-secondary">POR: <%= n.author.toUpperCase() %></small>
-                      </div>
-                      <div class="card-text mt-2">
-                        <p>
-                          <%=  n.descricao %>
-                        </p>
-                      </div>
-                      <div class="d-flex justify-content-end">
-                        <a href="/admin/aprove/<%= n.id %>" class="btn btn-success text-white">Ver detalhe</a>
-                      </div>
-                    </div>
-                  </div>                
-                <% }) %>
-              <% } else { %>
-                <h1 class="display-5">Ainda não há notícias a serem aprovadas 🧐 </h1>
-              <% } %>
+            <% news.forEach(n => { %>                    
+              <div class="card w-75 d-flex flex-row mb-3">
+                <img src="/uploads/<%= n.imagem %>" class="img-fluid rounded-start w-25" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= n.titulo %>
+                  </h5>
+                  <div class="card-text">
+                    <small class="text-body-secondary">POR: <%= n.author.toUpperCase() %></small>
+                  </div>
+                  <div class="card-text mt-2">
+                    <p>
+                      <%=  n.descricao %>
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <a href="/admin/aprove/<%= n.id %>" class="btn btn-success text-white">Ver detalhe</a>
+                  </div>
+                </div>
+              </div>                
+            <% }) %>
 
             </div>
           </div>
