@@ -35,7 +35,7 @@ describe('Controlador de Autenticação', () => {
     let req;
     let res;
     let redirectMock;
-
+  
     beforeEach(() => {
       req = {
         body: {},
@@ -49,14 +49,29 @@ describe('Controlador de Autenticação', () => {
         redirect: redirectMock,
       };
     });
-
+  
     it('deve redirecionar para a página de cadastro de login com mensagem de erro se o nome não for fornecido', async () => {
       await authController.signupCreate(req, res);
-
+  
       expect(req.flash).toHaveBeenCalledWith('messageError', 'Nome é obrigatório!');
       expect(req.session.save).toHaveBeenCalled();
       expect(redirectMock).not.toHaveBeenCalled();
-
+  
+      // Verificar o redirecionamento somente após o session.save()
+      req.session.save.mockImplementationOnce(callback => {
+        callback();
+        expect(redirectMock).toHaveBeenCalledWith('/signup');
+      });
+    });
+  
+    it('deve redirecionar para a página de cadastro de login com mensagem de erro se o status de acesso não for fornecido', async () => {
+      req.body.name = 'John Doe'; // Nome fornecido
+      await authController.signupCreate(req, res);
+  
+      expect(req.flash).toHaveBeenCalledWith('messageError', 'O nível de acesso é obrigatório!');
+      expect(req.session.save).toHaveBeenCalled();
+      expect(redirectMock).not.toHaveBeenCalled();
+  
       // Verificar o redirecionamento somente após o session.save()
       req.session.save.mockImplementationOnce(callback => {
         callback();
@@ -64,6 +79,7 @@ describe('Controlador de Autenticação', () => {
       });
     });
   });
+  
   
   describe('logout()', () => {
     it('deve destruir a sessão e redirecionar para a página de login', () => {
