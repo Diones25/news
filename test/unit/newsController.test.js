@@ -1,8 +1,9 @@
-const newsController = require('../../src/controllers/newsController');
+const newsController = require("../../src/controllers/newsController");
+const News = require("../../src/models/News.js");
 
-describe('News Controller', () => {
-  describe('home()', () => {
-    it('deve renderizar a página inicial', async () => {
+describe("News Controller", () => {
+  describe("home()", () => {
+    it("deve renderizar a página inicial", async () => {
       const req = {};
       const res = {
         render: jest.fn(),
@@ -10,29 +11,48 @@ describe('News Controller', () => {
 
       await newsController.home(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/home.ejs', { news: expect.anything() });
+      expect(res.render).toHaveBeenCalledWith("pages/news/home.ejs", {
+        news: expect.anything(),
+      });
     });
   });
 
-  describe('newsDetail()', () => {
-    it('deve renderizar a página de detalhes da notícia', async () => {
+  describe("newsDetail()", () => {
+    it("deve renderizar a página de detalhes da notícia", async () => {
       const req = {
         params: {
-          id: 1, // Substitua pelo ID válido da notícia para testar o detalhe da notícia
+          id: 1, // Substitua pelo ID válido da notícia
         },
       };
       const res = {
         render: jest.fn(),
       };
 
-      await newsController.newsDetail(req, res);
+      // Mock da função News.findOne
+      const mockFindOne = jest.fn().mockResolvedValue({
+        updatedAt: "2022-12-31", // Substitua pela data atualizada da notícia
+      });
+      News.findOne = mockFindOne;
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/newsDetail.ejs', { news: expect.anything(), data: expect.anything() });
+      await expect(newsController.newsDetail(req, res)).resolves.not.toThrow();
+
+      expect(mockFindOne).toHaveBeenCalledWith({
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      expect(res.render).toHaveBeenCalledWith("pages/news/newsDetail.ejs", {
+        news: expect.objectContaining({
+          updatedAt: expect.anything(),
+        }),
+        data: expect.any(String),
+      });
     });
   });
 
-  describe('lastedNews()', () => {
-    it('deve renderizar a página de últimas notícias', async () => {
+  describe("lastedNews()", () => {
+    it("deve renderizar a página de últimas notícias", async () => {
       const req = {};
       const res = {
         render: jest.fn(),
@@ -40,11 +60,13 @@ describe('News Controller', () => {
 
       await newsController.lastedNews(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/lastedNews.ejs', { news: expect.anything() });
+      expect(res.render).toHaveBeenCalledWith("pages/news/lastedNews.ejs", {
+        news: expect.anything(),
+      });
     });
   });
 
-  describe('about()', () => {
+  describe("about()", () => {
     it('deve renderizar a página "sobre"', () => {
       const req = {};
       const res = {
@@ -53,12 +75,12 @@ describe('News Controller', () => {
 
       newsController.about(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/about.ejs');
+      expect(res.render).toHaveBeenCalledWith("pages/news/about.ejs");
     });
   });
 
-  describe('contact()', () => {
-    it('deve renderizar a página de contato', () => {
+  describe("contact()", () => {
+    it("deve renderizar a página de contato", () => {
       const req = {};
       const res = {
         render: jest.fn(),
@@ -66,7 +88,7 @@ describe('News Controller', () => {
 
       newsController.contact(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/news/contact.ejs');
+      expect(res.render).toHaveBeenCalledWith("pages/news/contact.ejs");
     });
   });
 });
