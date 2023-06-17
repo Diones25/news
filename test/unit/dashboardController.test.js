@@ -55,11 +55,13 @@ describe("Dashboard Controller", () => {
     it("deve aprovar a notícia, atualizar o status e redirecionar para a página de aprovação de notícias", async () => {
       const req = {
         body: {
-          id: 1, // Substitua pelo ID da notícia a ser aprovada
+          id: 1,
         },
         flash: jest.fn(),
         session: {
-          save: jest.fn(),
+          save: jest.fn().mockImplementationOnce((callback) => {
+            callback();
+          }),
         },
       };
 
@@ -73,19 +75,23 @@ describe("Dashboard Controller", () => {
 
       expect(mockUpdate).toHaveBeenCalledWith(
         { status: "approved" },
-        { where: { id: req.body.id } }
+        {
+          where: {
+            id: req.body.id,
+          },
+        }
       );
 
       expect(req.flash).toHaveBeenCalledWith(
         "message",
         "Notícia aprovada com sucesso!"
       );
+
       expect(req.session.save).toHaveBeenCalled();
 
-      setTimeout(() => {
-        expect(res.redirect).toHaveBeenCalledWith("/admin/aprove");
-        mockUpdate.mockRestore();
-      }, 10); // Ajuste o valor do atraso se necessário
+      await new Promise((resolve) => setTimeout(resolve, 100)); // Aguardar a conclusão da função assíncrona
+
+      expect(res.redirect).toHaveBeenCalledWith("/admin/aprove");
     });
   });
 
