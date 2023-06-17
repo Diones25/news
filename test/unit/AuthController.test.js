@@ -1,12 +1,12 @@
-const authController = require('../../src/controllers/AuthController');
+const authController = require("../../src/controllers/AuthController");
 
-jest.mock('../../src/models/User.js', () => ({
+jest.mock("../../src/models/User.js", () => ({
   findOne: jest.fn(),
 }));
 
-describe('Controlador de Autenticação', () => {
-  describe('signin()', () => {
-    it('deve renderizar a página de login', () => {
+describe("Controlador de Autenticação", () => {
+  describe("signin()", () => {
+    it("deve renderizar a página de login", () => {
       const req = {};
       const res = {
         render: jest.fn(),
@@ -14,12 +14,12 @@ describe('Controlador de Autenticação', () => {
 
       authController.signin(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/admin/signin.ejs');
+      expect(res.render).toHaveBeenCalledWith("pages/admin/signin.ejs");
     });
   });
 
-  describe('signup()', () => {
-    it('deve renderizar a página de cadastro de login', () => {
+  describe("signup()", () => {
+    it("deve renderizar a página de cadastro de login", () => {
       const req = {};
       const res = {
         render: jest.fn(),
@@ -27,15 +27,15 @@ describe('Controlador de Autenticação', () => {
 
       authController.signup(req, res);
 
-      expect(res.render).toHaveBeenCalledWith('pages/admin/signup.ejs');
+      expect(res.render).toHaveBeenCalledWith("pages/admin/signup.ejs");
     });
   });
 
-  describe('signupCreate()', () => {
+  describe("signupCreate()", () => {
     let req;
     let res;
     let redirectMock;
-  
+
     beforeEach(() => {
       req = {
         body: {},
@@ -49,78 +49,86 @@ describe('Controlador de Autenticação', () => {
         redirect: redirectMock,
       };
     });
-  
-    it('deve redirecionar para a página de cadastro de login com mensagem de erro se o nome não for fornecido', async () => {
+
+    it("deve redirecionar para a página de cadastro de login com mensagem de erro se o nome não for fornecido", async () => {
       await authController.signupCreate(req, res);
-  
-      expect(req.flash).toHaveBeenCalledWith('messageError', 'Nome é obrigatório!');
+
+      expect(req.flash).toHaveBeenCalledWith(
+        "messageError",
+        "Nome é obrigatório!"
+      );
       expect(req.session.save).toHaveBeenCalled();
       expect(redirectMock).not.toHaveBeenCalled();
-  
+
       // Verificar o redirecionamento somente após o session.save()
-      req.session.save.mockImplementationOnce(callback => {
+      req.session.save.mockImplementationOnce((callback) => {
         callback();
-        expect(redirectMock).toHaveBeenCalledWith('/signup');
-      });
-    });
-  
-    it('deve redirecionar para a página de cadastro de login com mensagem de erro se o status de acesso não for fornecido', async () => {
-      req.body.name = 'John Doe'; // Nome fornecido
-      await authController.signupCreate(req, res);
-  
-      expect(req.flash).toHaveBeenCalledWith('messageError', 'O nível de acesso é obrigatório!');
-      expect(req.session.save).toHaveBeenCalled();
-      expect(redirectMock).not.toHaveBeenCalled();
-  
-      // Verificar o redirecionamento somente após o session.save()
-      req.session.save.mockImplementationOnce(callback => {
-        callback();
-        expect(redirectMock).toHaveBeenCalledWith('/signup');
+        expect(redirectMock).toHaveBeenCalledWith("/signup");
       });
     });
 
-    it('deve redirecionar para a página de cadastro de login com mensagem de erro se o email não for fornecido', async () => {
-      req.body.name = 'John Doe'; // Nome fornecido
-      req.body.status = 'jornalista'; // Status de acesso fornecido
-    
+    it("deve redirecionar para a página de cadastro de login com mensagem de erro se o status de acesso não for fornecido", async () => {
+      req.body.name = "John Doe"; // Nome fornecido
       await authController.signupCreate(req, res);
-    
-      expect(req.flash).toHaveBeenCalledWith('messageError', 'Email é obrigatório!');
+
+      expect(req.flash).toHaveBeenCalledWith(
+        "messageError",
+        "O nível de acesso é obrigatório!"
+      );
       expect(req.session.save).toHaveBeenCalled();
       expect(redirectMock).not.toHaveBeenCalled();
-    
+
       // Verificar o redirecionamento somente após o session.save()
-      req.session.save.mockImplementationOnce(callback => {
+      req.session.save.mockImplementationOnce((callback) => {
         callback();
-        expect(redirectMock).toHaveBeenCalledWith('/signup');
+        expect(redirectMock).toHaveBeenCalledWith("/signup");
       });
     });
 
-    it('deve redirecionar para a página de cadastro de login com mensagem de erro se a senha não for fornecida', async () => {
-      req.body.name = 'John Doe'; // Nome fornecido
-      req.body.status = 'jornalista'; // Status de acesso fornecido
-      req.body.email = 'john.doe@example.com'; // Email fornecido
-    
+    it("deve redirecionar para a página de cadastro de login com mensagem de erro se o email não for fornecido", async () => {
+      req.body.name = "John Doe"; // Nome fornecido
+      req.body.status = "jornalista"; // Status de acesso fornecido
+
       await authController.signupCreate(req, res);
-    
-      expect(req.flash).toHaveBeenCalledWith('messageError', 'A senha é obrigatória!');
+
+      expect(req.flash).toHaveBeenCalledWith(
+        "messageError",
+        "Email é obrigatório!"
+      );
       expect(req.session.save).toHaveBeenCalled();
       expect(redirectMock).not.toHaveBeenCalled();
-    
+
       // Verificar o redirecionamento somente após o session.save()
-      req.session.save.mockImplementationOnce(callback => {
+      req.session.save.mockImplementationOnce((callback) => {
         callback();
-        expect(redirectMock).toHaveBeenCalledWith('/signup');
+        expect(redirectMock).toHaveBeenCalledWith("/signup");
       });
     });
-    
-    
-    
+
+    it("deve redirecionar para a página de cadastro de login com mensagem de erro se a senha não for fornecida", async () => {
+      req.body.name = "John Doe"; // Nome fornecido
+      req.body.status = "jornalista"; // Status de acesso fornecido
+      req.body.email = "john.doe@example.com"; // Email fornecido
+
+      await authController.signupCreate(req, res);
+
+      expect(req.flash).toHaveBeenCalledWith(
+        "messageError",
+        "A senha é obrigatória!"
+      );
+      expect(req.session.save).toHaveBeenCalled();
+      expect(redirectMock).not.toHaveBeenCalled();
+
+      // Verificar o redirecionamento somente após o session.save()
+      req.session.save.mockImplementationOnce((callback) => {
+        callback();
+        expect(redirectMock).toHaveBeenCalledWith("/signup");
+      });
+    });
   });
-  
-  
-  describe('logout()', () => {
-    it('deve destruir a sessão e redirecionar para a página de login', () => {
+
+  describe("logout()", () => {
+    it("deve destruir a sessão e redirecionar para a página de login", () => {
       const req = {
         session: {
           destroy: jest.fn(),
@@ -133,7 +141,7 @@ describe('Controlador de Autenticação', () => {
       authController.logout(req, res);
 
       expect(req.session.destroy).toHaveBeenCalled();
-      expect(res.redirect).toHaveBeenCalledWith('/signin');
+      expect(res.redirect).toHaveBeenCalledWith("/signin");
     });
   });
 });
